@@ -26,6 +26,8 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 CAMINHO_TREINO = "dados/treino"
 CAMINHO_MODELO = "resultados/checkpoints/modelo_treinado.pth"
 CAMINHO_VOCAB = "resultados/checkpoints/vocab.pkl"
+CAMINHO_REDACOES = "../dados/treino/redacoes.csv"
+CAMINHO_NOTAS = "../dados/treino/notas.csv"
  
 def transformar_texto_em_tensor(textos, vocab):
     ids = textos_para_ids(textos, vocab)
@@ -37,9 +39,6 @@ def treinar_modelo():
     def processar_texto(texto):
         texto = texto.lower()
         return ' '.join(texto.split()[:MAX_PALAVRAS])
- 
-    CAMINHO_REDACOES = "dados/treino/redacoes.csv"
-    CAMINHO_NOTAS = "dados/treino/notas.csv"
 
     dataset = MeuDatasetTexto(
         caminho_redacoes=CAMINHO_REDACOES,

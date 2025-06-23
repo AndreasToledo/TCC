@@ -11,7 +11,7 @@ class EssayController extends Controller
 
         // 1. Gera a nota
         $processNota = proc_open(
-            'python C:\Users\User\Documents\TCC\IA_TCC\inferencia.py',
+            'python ..\..\IA_TCC\inferencia.py',
             [
                 0 => ['pipe', 'r'],
                 1 => ['pipe', 'w'],
@@ -42,7 +42,7 @@ class EssayController extends Controller
 
         // 2. Gera o feedback
         $processFeedback = proc_open(
-            'python C:\Users\User\Documents\TCC\IA_analise\main.py',
+            'python ..\..\IA_analise\main.py',
             [
                 0 => ['pipe', 'r'],
                 1 => ['pipe', 'w'],

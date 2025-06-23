@@ -2,14 +2,20 @@ import sys
 import torch
 import pickle
 import io
+import os
+
 from src.modelo import criar_modelo
 from src.preprocessamento import preprocessar_texto
 
 sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-modelo_path = r"C:\Users\User\Documents\TCC\IA_TCC\resultados\checkpoints\modelo_treinado.pth"
-vocab_path = r"C:\Users\User\Documents\TCC\IA_TCC\resultados\checkpoints\vocab.pkl"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__)))
+
+CAMINHO_REDACOES = os.path.join(BASE_DIR, 'dados', 'treino', 'redacoes.csv')
+CAMINHO_NOTAS = os.path.join(BASE_DIR, 'dados', 'treino', 'notas.csv')
+vocab_path = os.path.join(BASE_DIR, 'resultados', 'checkpoints', 'vocab.pkl')
+modelo_path = os.path.join(BASE_DIR, 'resultados', 'checkpoints', 'modelo_treinado.pth')
                 
 with open(vocab_path, "rb") as f:
     vocab = pickle.load(f)
